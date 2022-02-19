@@ -1,19 +1,27 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <Version>0.0.1-preview-01</Version>
+        <Version>0.0.1-preview-02</Version>
         <TargetFrameworks>net45;netstandard1.3;netstandard2.0;netstandard2.1;netcoreapp3.1;net5.0;net6.0</TargetFrameworks>
         <LangVersion>10</LangVersion>
         <Nullable>enable</Nullable>
         <Copyright>Copyright © 2018-2022 Stef Heyenrath</Copyright>
-        <PackageProjectUrl>https://github.com/stefh/Stef.FileWatcher</PackageProjectUrl>
-        <PackageReadmeFile>README.md</PackageReadmeFile>
-        <RepositoryUrl>https://github.com/stefh/Stef.FileWatcher</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/stefh/FileWatcher</PackageProjectUrl>
+        <PackageReadmeFile>PackageReadme.md</PackageReadmeFile>
+        <RepositoryUrl>https://github.com/stefh/FileWatcher</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>filewatcher, filesystemwatcher, io, filesystemevent, monitor, file-watcher, file-monitoring, realtime, file-systems, file-system-events, monitor-file-system, fs, fsevents</PackageTags>
         <Description>This project is based on the VSCode FileWatcher</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <Authors>Stef Heyenrath</Authors>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="../../PackageReadme.md" Pack="true" PackagePath="" />
+    </ItemGroup>
+
+    <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.3' ">
