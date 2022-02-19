@@ -1,33 +1,25 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using Stef.FileWatcher;
 
-using Stef.FileWatcher;
+var path = @"C:\temp\fs";
 
-Console.WriteLine("Hello, World!");
+Console.WriteLine("Watching {0}", path);
 
-var _fw = new FileWatcher(@"C:\temp\fs")
+var fileWatcher = new FileWatcher(path)
 {
     IncludeSubdirectories = true
 };
-_fw.OnCreated += FW_OnX;
-_fw.OnDeleted += FW_OnX;
-_fw.OnChanged += FW_OnX;
-_fw.OnRenamed += FW_OnX;
-
-
-//_fw.OnCreated += FW_OnCreated;
-//_fw.OnDeleted += FW_OnDeleted;
-//_fw.OnChanged += FW_OnChanged;
-//_fw.OnError += FW_OnError;
-
-// thread-safe for event handlers
-//_fw.SynchronizingObject = s;
+fileWatcher.OnCreated += OnX;
+fileWatcher.OnDeleted += OnX;
+fileWatcher.OnChanged += OnX;
+fileWatcher.OnRenamed += OnX;
 
 // start watching
-_fw.Start();
+fileWatcher.Start();
 
-Console.ReadLine();
+Console.WriteLine("Press a key to exit");
+Console.ReadKey();
 
-void FW_OnX(object sender, FileChangedEvent e)
+void OnX(object sender, FileChangedEvent e)
 {
-    Console.WriteLine($"[cha] {Enum.GetName(typeof(ChangeType), e.ChangeType)} | {e.FullPath}");
+    Console.WriteLine($"{e.ChangeType} | {e.FullPath}");
 }
