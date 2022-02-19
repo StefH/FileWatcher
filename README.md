@@ -14,32 +14,32 @@ This project is based on:
 ## Usage
 See Demo project for full details
 
-```cs
-using FileWatcherEx;
+``` c#
+using Stef.FileWatcher;
 
+var path = @"C:\temp\fs";
 
-var _fw = new FileSystemWatcherEx(@"C:\path\to\watch");
+Console.WriteLine("Watching {0}", path);
 
-// event handlers
-_fw.OnRenamed += FW_OnRenamed;
-_fw.OnCreated += FW_OnCreated;
-_fw.OnDeleted += FW_OnDeleted;
-_fw.OnChanged += FW_OnChanged;
-_fw.OnError += FW_OnError;
-
-// thread-safe for event handlers
-_fw.SynchronizingObject = this;
+var fileWatcher = new FileWatcher(path)
+{
+    IncludeSubdirectories = true
+};
+fileWatcher.OnCreated += OnX;
+fileWatcher.OnDeleted += OnX;
+fileWatcher.OnChanged += OnX;
+fileWatcher.OnRenamed += OnX;
 
 // start watching
-_fw.Start();
+fileWatcher.Start();
 
+Console.WriteLine("Press a key to exit");
+Console.ReadKey();
 
-
-void FW_OnRenamed(object sender, FileChangedEvent e)
+void OnX(object sender, FileChangedEvent e)
 {
-  // do something here
+    Console.WriteLine($"{e.ChangeType} | {e.FullPath}");
 }
-...
 
 ```
 
