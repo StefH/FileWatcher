@@ -5,7 +5,7 @@
         <TargetFrameworks>net45;netstandard1.3;netstandard2.0;netstandard2.1;netcoreapp3.1;net5.0;net6.0</TargetFrameworks>
         <LangVersion>10</LangVersion>
         <Nullable>enable</Nullable>
-        <Copyright>Copyright © 2018-2022 Stef Heyenrath</Copyright>
+        <Copyright>Copyright © Stef Heyenrath</Copyright>
         <PackageProjectUrl>https://github.com/stefh/FileWatcher</PackageProjectUrl>
         <PackageReadmeFile>PackageReadme.md</PackageReadmeFile>
         <RepositoryUrl>https://github.com/stefh/FileWatcher</RepositoryUrl>
